@@ -32,7 +32,7 @@ class AppTheme extends IAppTheme {
       );
 
   IconThemeData get _iconThemeData => IconThemeData(
-        color: Colors.grey,
+        color: Colors.white,
         size: 15,
       );
 
@@ -40,7 +40,7 @@ class AppTheme extends IAppTheme {
       primary: Colors.white,
       primaryVariant: Colors.white10,
       secondary: Colors.grey,
-      secondaryVariant: Colors.deepPurple,
+      secondaryVariant: _appColor.azureRadiance,
       surface: Colors.red,
       background: Colors.black,
       error: Colors.teal.shade800,

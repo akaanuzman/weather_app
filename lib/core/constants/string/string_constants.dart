@@ -13,4 +13,5 @@ class StringConstants {
 
   final String today = "Today";
   final String sevenDays = "7 days";
+  final String updating = "Updating";
 }

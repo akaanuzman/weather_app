@@ -24,12 +24,55 @@ extension ColorExtension on BuildContext {
   Color get primaryColor => theme.primaryColor;
   Color get accentColor => theme.accentColor;
   Color get errorColor => theme.errorColor;
+}
 
+extension ColorOpacity on BuildContext {
   // Opacity
-  Color greywithOpacity(double opacity) =>
-      colorSchemeSurface.withOpacity(opacity);
-  Color blackWithOpacity(double opacity) =>
-      scaffoldBackgroundColor.withOpacity(opacity);
-  Color whiteWithOpacity(double opacity) =>
+  Color colorSchemePrimaryWithOpacity(double opacity) =>
       colorSchemePrimary.withOpacity(opacity);
+
+  Color colorSchemePrimaryVariantWithOpacity(double opacity) =>
+      colorSchemePrimaryVariant.withOpacity(opacity);
+
+  Color colorSchemeSecondaryWithOpacity(double opacity) =>
+      colorSchemeSecondary.withOpacity(opacity);
+
+  Color colorSchemeSecondaryVariantWithOpacity(double opacity) =>
+      colorSchemeSecondaryVariant.withOpacity(opacity);
+
+  Color colorSchemeSurfaceWithOpacity(double opacity) =>
+      colorSchemeSurface.withOpacity(opacity);
+
+  Color colorSchemeBackgroundWithOpacity(double opacity) =>
+      colorSchemeBackground.withOpacity(opacity);
+
+  Color colorSchemeErrorWithOpacity(double opacity) =>
+      colorSchemeError.withOpacity(opacity);
+
+  Color colorSchemeOnPrimaryWithOpacity(double opacity) =>
+      colorSchemeOnPrimary.withOpacity(opacity);
+
+  Color colorSchemeOnSecondaryWithOpacity(double opacity) =>
+      colorSchemeOnSecondary.withOpacity(opacity);
+
+  Color colorSchemeOnSurfaceWithOpacity(double opacity) =>
+      colorSchemeOnSurface.withOpacity(opacity);
+
+  Color colorSchemeOnBackgroundWithOpacity(double opacity) =>
+      colorSchemeOnBackground.withOpacity(opacity);
+
+  Color colorSchemeOnErrorWithOpacity(double opacity) =>
+      colorSchemeOnError.withOpacity(opacity);
+
+  Color scaffoldBackgroundColorWithOpacity(double opacity) =>
+      scaffoldBackgroundColor.withOpacity(opacity);
+
+  Color primaryColorWithOpacity(double opacity) =>
+      primaryColor.withOpacity(opacity);
+
+  Color accentColorWithOpacity(double opacity) =>
+      accentColor.withOpacity(opacity);
+
+  Color errorColorWithOpacity(double opacity) =>
+      errorColor.withOpacity(opacity);
 }

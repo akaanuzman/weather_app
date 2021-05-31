@@ -14,4 +14,5 @@ class AppColor {
   AppColor.init();
 
   final Color blackPearl = Color(0xff030317);
+  final Color azureRadiance = Color(0xff00A1FF);
 }
