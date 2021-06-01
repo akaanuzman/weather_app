@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/core/init/color/app_color.dart';
 
+import '../color/app_color.dart';
 import 'IAppTheme.dart';
 
 class AppTheme extends IAppTheme {

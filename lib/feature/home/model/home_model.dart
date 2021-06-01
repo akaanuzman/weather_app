@@ -1,4 +1,4 @@
-import 'package:weather_app/core/base/base_model.dart';
+import '../../../core/base/base_model.dart';
 
 class HomeModel extends BaseModel {
   final int? max;

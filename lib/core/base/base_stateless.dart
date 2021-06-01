@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/core/constants/string/string_constants.dart';
-import 'package:weather_app/core/init/icon/app_icon.dart';
-import 'package:weather_app/feature/home/model/home_model.dart';
+
+import '../../feature/home/model/home_model.dart';
+import '../constants/string/string_constants.dart';
+import '../init/icon/app_icon.dart';
 
 abstract class BaseStateless extends StatelessWidget {
   StringConstants get stringContants => StringConstants.init();
