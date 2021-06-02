@@ -14,4 +14,7 @@ class StringConstants {
   final String today = "Today";
   final String sevenDays = "7 days";
   final String updating = "Updating";
+  final String wind = "Wind";
+  final String humidity = "Humidity";
+  final String rain = "Rain";
 }

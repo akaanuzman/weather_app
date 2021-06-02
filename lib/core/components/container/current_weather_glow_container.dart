@@ -2,6 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_glow/flutter_glow.dart';
 import 'package:kartal/kartal.dart';
+import 'package:weather_app/core/components/column/column_weather.dart';
+import 'package:weather_app/core/components/glowtext/high_glow_text.dart';
+import 'package:weather_app/core/components/icon/normal_icon.dart';
+import 'package:weather_app/core/components/text/headline2_text_copy.dart';
+import 'package:weather_app/feature/detail/view/detail_view.dart';
 
 import '../../base/base_stateless.dart';
 import '../../extensions/context_extension.dart';
@@ -14,101 +19,113 @@ class CurrentWeather extends BaseStateless {
     return GlowContainer(
       margin: EdgeInsets.all(2),
       glowColor: context.colorSchemeSecondaryVariantWithOpacity(0.5),
-      borderRadius: BorderRadius.only(
-        bottomLeft: Radius.circular(context.mediumValue * 1.2),
-        bottomRight: Radius.circular(context.mediumValue * 1.2),
-      ),
+      borderRadius: _buildBorderRadius(context),
       color: context.colorSchemeSecondaryVariant,
       spreadRadius: 5,
-      child: Padding(
+      child: _buildMidItems(context),
+    );
+  }
+
+  BorderRadius _buildBorderRadius(BuildContext context) => BorderRadius.only(
+        bottomLeft: Radius.circular(context.mediumValue * 1.2),
+        bottomRight: Radius.circular(context.mediumValue * 1.2),
+      );
+
+  Padding _buildMidItems(BuildContext context) => Padding(
         padding: context.paddingNormal,
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Icon(
-                  icon.squareGrid,
-                  color: context.colorSchemePrimary,
-                  size: context.dynamicWidth(0.06),
-                ),
-                Row(
-                  children: [
-                    Icon(
-                      icon.mapFill,
-                      size: context.dynamicWidth(0.06),
-                    ),
-                    Text(
-                      homeModel.currentTemp.location!,
-                      style: context.textTheme.headline2,
-                    ),
-                  ],
-                ),
-                Icon(
-                  Icons.more_vert,
-                  size: context.dynamicWidth(0.06),
-                )
-              ],
-            ),
+            _buildTopRow,
             context.emptySizedHeightBoxLow,
-            Container(
-              padding: context.paddingLow,
-              decoration: BoxDecoration(
-                  border:
-                      Border.all(width: 0.2, color: context.colorSchemePrimary),
-                  borderRadius: context.normalBorderRadius),
-              child: Text(
-                stringContants.updating,
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ),
-            Container(
-              height: context.dynamicHeight(0.52),
-              child: Stack(
-                children: [
-                  Image(
-                    image: AssetImage(homeModel.currentTemp.image!),
-                  ),
-                  Positioned(
-                    bottom: 0,
-                    right: 0,
-                    left: 0,
-                    child: Center(
-                      child: Column(
-                        children: [
-                          GlowText(
-                            "${homeModel.currentTemp.current}",
-                            style: TextStyle(
-                                height: 0.1,
-                                fontSize: 120,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          context.emptySizedHeightBoxLow,
-                          Headline3TextCopy(data: homeModel.currentTemp.name!),
-                          Headline5TextCopy(data: homeModel.currentTemp.day!)
-                        ],
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
+            _buildUpdatingTextContainer(context),
+            _buildMiddleContainer(context),
             Divider(color: context.colorSchemePrimary),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Icon(
-                  CupertinoIcons.wind,
-                  size: context.dynamicHeight(0.018),
-                ),
-                context.emptySizedHeightBoxLow,
-                Headline5TextCopy(data: "${homeModel.currentTemp.wind} Km/h"),
-                Headline5TextCopy(data: "Wind")
-              ],
-            )
+            _buildGoToDetailPage(context)
           ],
         ),
-      ),
-    );
-  }
+      );
+
+  Row get _buildTopRow => Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          NormalIcon(icon: icon.squareGrid),
+          _buildTopMidRow,
+          NormalIcon(icon: icon.moreVert)
+        ],
+      );
+
+  Row get _buildTopMidRow => Row(
+        children: [
+          NormalIcon(icon: icon.mapFill),
+          Headline2TextCopy(data: homeModel.currentTemp.location!)
+        ],
+      );
+
+  Container _buildUpdatingTextContainer(BuildContext context) => Container(
+        padding: context.paddingLow,
+        decoration: BoxDecoration(
+            border: Border.all(width: 0.2, color: context.colorSchemePrimary),
+            borderRadius: context.normalBorderRadius),
+        child: _buildUpdatingText,
+      );
+
+  Text get _buildUpdatingText => Text(
+        stringContants.updating,
+        style: TextStyle(fontWeight: FontWeight.bold),
+      );
+
+  Container _buildMiddleContainer(BuildContext context) => Container(
+        height: context.dynamicHeight(0.52),
+        child: Stack(
+          children: [
+            Image(
+              image: AssetImage(homeModel.currentTemp.image!),
+            ),
+            _buildMiddleTexts(context)
+          ],
+        ),
+      );
+
+  Positioned _buildMiddleTexts(BuildContext context) => Positioned(
+        bottom: 0,
+        right: 0,
+        left: 0,
+        child: Column(
+          children: [
+            HighGlowText(model: homeModel),
+            context.emptySizedHeightBoxLow,
+            Headline3TextCopy(data: homeModel.currentTemp.name!),
+            Headline5TextCopy(data: homeModel.currentTemp.day!)
+          ],
+        ),
+      );
+
+  GestureDetector _buildGoToDetailPage(BuildContext context) => GestureDetector(
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => DetailView(),
+            ),
+          );
+        },
+        child: _buildStatisticsRow,
+      );
+
+  Row get _buildStatisticsRow => Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          ColumnWeather(
+            titleText: "${homeModel.currentTemp.wind} Km/h",
+            subTitleText: stringContants.wind,
+          ),
+          ColumnWeather(
+            titleText: "${homeModel.currentTemp.humidity} %",
+            subTitleText: stringContants.humidity,
+          ),
+          ColumnWeather(
+            titleText: "${homeModel.currentTemp.chanceRain} %",
+            subTitleText: stringContants.rain,
+          ),
+        ],
+      );
 }
