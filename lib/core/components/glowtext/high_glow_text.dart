@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_glow/flutter_glow.dart';
-import 'package:weather_app/feature/home/model/home_model.dart';
+import '../../../feature/home/model/home_model.dart';
 
 class HighGlowText extends StatelessWidget {
   final HomeModel model;

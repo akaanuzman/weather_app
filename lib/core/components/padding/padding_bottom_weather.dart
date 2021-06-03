@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:kartal/kartal.dart';
+
 import '../../base/base_stateless.dart';
+import '../../extensions/context_extension.dart';
 import '../container/weather_container.dart';
 import '../text/bodytext1_copy.dart';
 import '../text/headline3_text_copy.dart';
-import 'package:kartal/kartal.dart';
-import '../../extensions/context_extension.dart';
 
 class PaddingBottomWeather extends BaseStateless {
   @override

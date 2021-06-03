@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_glow/flutter_glow.dart';
 import 'package:kartal/kartal.dart';
-import 'package:weather_app/core/components/column/column_weather.dart';
-import 'package:weather_app/core/components/glowtext/high_glow_text.dart';
-import 'package:weather_app/core/components/icon/normal_icon.dart';
-import 'package:weather_app/core/components/text/headline2_text_copy.dart';
-import 'package:weather_app/feature/detail/view/detail_view.dart';
+import '../column/column_weather.dart';
+import '../glowtext/high_glow_text.dart';
+import '../icon/normal_icon.dart';
+import '../text/headline2_text_copy.dart';
+import '../../../feature/detail/view/detail_view.dart';
 
 import '../../base/base_stateless.dart';
 import '../../extensions/context_extension.dart';
