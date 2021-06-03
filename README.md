@@ -1,16 +1,12 @@
-# weather_app
+# Weather App
 
-A new Flutter project.
+## Packages 
+I used the "kartal" and "flutter_glow" package in this project because it provides convenience in design.
+<br/>
+If you want to reach the "kartal" package:
+<br/>
+<br/>
+<a href="https://pub.dev/packages/kartal"><img src="https://i.imgur.com/G5MQMcb.png" title="Kartal Package"/></a>
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Preview
+<a href="https://media.giphy.com/media/VgYGAjDjbnxKPA7H9c/giphy.gif"><img src="https://media.giphy.com/media/VgYGAjDjbnxKPA7H9c/giphy.gif" title="Preview"/></a>
